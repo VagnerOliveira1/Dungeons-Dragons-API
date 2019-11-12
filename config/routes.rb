@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  namespace 'api' do
-    namespace 'v1' do
-      resources :skills
-      resources :characters
+  namespace :api do
+    namespace :v1 do
+      resources :characters do
+        resources :skills
+      end
     end
   end
 end

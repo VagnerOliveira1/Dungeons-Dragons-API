@@ -6,8 +6,7 @@ module Api
         # GET /characters
         def index
           @characters = Character.all
-
-          render json: @characters
+          render json: @characters, except: [:created_at, :updated_at], include: [:skills]
         end
 
         # GET /characters/1
