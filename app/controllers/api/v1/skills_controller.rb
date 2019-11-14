@@ -4,8 +4,8 @@ module Api
         before_action :set_skill, only: [:show, :update, :destroy]
         # GET /skills
         def index
-          @skills = Skill.all
-          render json: @skills
+          character = Character.find(params[:character_id])
+          render json: character.skills
         end
 
         # GET /skills/1
@@ -23,7 +23,7 @@ module Api
             render json: @skill.errors, status: :unprocessable_entity
           end
         end
-        
+
         # PATCH/PUT /skills/1
         def update
           @character = Character.find(params[:character_id])
