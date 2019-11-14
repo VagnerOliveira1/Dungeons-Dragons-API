@@ -2,11 +2,9 @@ module Api
   module V1
     class SkillsController < ApplicationController
         before_action :set_skill, only: [:show, :update, :destroy]
-
         # GET /skills
         def index
           @skills = Skill.all
-
           render json: @skills
         end
 
@@ -17,17 +15,19 @@ module Api
 
         # POST /skills
         def create
-          @skill = Skill.new(skill_params)
-
+          @character = Character.find(params[:character_id])
+          @skill = @character.skills.new(skill_params)
           if @skill.save
             render json: @skill, status: :created, location: @skill
           else
             render json: @skill.errors, status: :unprocessable_entity
           end
         end
-
+        
         # PATCH/PUT /skills/1
         def update
+          @character = Character.find(params[:character_id])
+          @skill = @character.skills.find(params[:id])
           if @skill.update(skill_params)
             render json: @skill
           else
@@ -37,7 +37,13 @@ module Api
 
         # DELETE /skills/1
         def destroy
-          @skill.destroy
+          @character = Character.find(params[:character_id])
+          @skill = @character.skills.update(params[:id])
+          if @skill
+            @skill.destroy
+          else
+            render json: @skill.errors, status: :unprocessable_entity
+          end
         end
 
         private
@@ -50,6 +56,7 @@ module Api
           def skill_params
             params.require(:skill).permit(:character_id, :name, :ability, :proficient)
           end
-      end
+        end
+
     end
 end
