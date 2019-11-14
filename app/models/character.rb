@@ -1,5 +1,5 @@
 class Character < ApplicationRecord
-     has_many :skills 
+     has_many :skills
      scope :filter_strenght_greather_than, ->(int) {where('strength > ?', int) if int.present?}
      scope :filter_strength_less_than, ->(int) {where('strength < ?', int) if int.present?}
 
@@ -18,13 +18,13 @@ class Character < ApplicationRecord
      scope :filter_charisma_greather_than, ->(int) {where('charisma > ?', int) if int.present?}
      scope :filter_charisma_less_than, ->(int) {where('charisma < ?',int) if int.present?}
 
-     scope :filter_character_name, ->(string){where(name: string) if string.present?}
+     scope :filter_character_name, ->(string){where('name LIKE ?', "%#{string}%") if string.present?}
 
 
 
-     
 
-     
+
+
 
 
 
@@ -37,6 +37,6 @@ class Character < ApplicationRecord
     def proficient_bonus
 
     end
-    
-        
+
+
 end
