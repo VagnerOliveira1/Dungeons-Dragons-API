@@ -1,5 +1,20 @@
 class Character < ApplicationRecord
      has_many :skills
+
+     validates :strength , presence: true, inclusion:{in: 1..20}
+     validates :dexterity, presence: true, inclusion:{in: 1..20}
+     
+     validates :strength , presence: true, inclusion:{in: 1..20}
+     validates :dexterity, presence: true, inclusion:{in: 1..20}
+     validates :constitution , presence: true, inclusion:{in: 1..20}
+     validates :inteligence, presence: true, inclusion:{in: 1..20}
+
+     validates :wisdom , presence: true, inclusion:{in: 1..20}
+     validates :charisma, presence: true, inclusion:{in: 1..20}
+
+
+     validates :name, presence: true, length: {maximum: 25}
+
      scope :filter_strenght_greather_than, ->(int) {where('strength > ?', int) if int.present?}
      scope :filter_strength_less_than, ->(int) {where('strength < ?', int) if int.present?}
 
