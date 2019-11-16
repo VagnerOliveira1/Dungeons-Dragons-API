@@ -1,16 +1,16 @@
 class Character < ApplicationRecord
      has_many :skills
 
-     validates :strength , presence: true, inclusion:{in: 1..20}
-     validates :dexterity, presence: true, inclusion:{in: 1..20}
+     validates :strength , presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
+     validates :dexterity, presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
      
-     validates :strength , presence: true, inclusion:{in: 1..20}
-     validates :dexterity, presence: true, inclusion:{in: 1..20}
-     validates :constitution , presence: true, inclusion:{in: 1..20}
-     validates :inteligence, presence: true, inclusion:{in: 1..20}
+     validates :strength , presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
+     validates :dexterity, presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
+     validates :constitution , presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
+     validates :inteligence, presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
 
-     validates :wisdom , presence: true, inclusion:{in: 1..20}
-     validates :charisma, presence: true, inclusion:{in: 1..20}
+     validates :wisdom , presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
+     validates :charisma, presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
 
 
      validates :name, presence: true, length: {maximum: 25}
