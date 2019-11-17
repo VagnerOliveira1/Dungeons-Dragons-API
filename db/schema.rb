@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_202751) do
     t.integer "character_id"
     t.string "name"
     t.string "ability"
-    t.boolean "proficient"
+    t.boolean "proficient", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

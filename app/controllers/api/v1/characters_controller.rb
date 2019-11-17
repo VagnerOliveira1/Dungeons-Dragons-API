@@ -19,12 +19,14 @@ module Api
                        .filter_charisma_less_than(params[:char_lt])
                        .filter_character_name(params[:name])
           # @characters = Character.all
-          render json: @characters, except: [:created_at, :updated_at], include: [:skills]
+          # render json: @characters 
+
         end
 
         # GET /characters/1
         def show
-          render json: @character
+          # render json: @character
+
         end
 
         # POST /characters

@@ -4,8 +4,8 @@ module Api
         before_action :set_skill, only: [:show, :update, :destroy]
         # GET /skills
         def index
-          character = Character.find(params[:character_id])
-          render json: character.skills
+          @character = Character.find(params[:character_id])
+          render json: @character.skills, except: [:created_at, :updated_at]
         end
 
         # GET /skills/1
@@ -18,7 +18,7 @@ module Api
           @character = Character.find(params[:character_id])
           @skill = @character.skills.new(skill_params)
           if @skill.save
-            render json: @skill, status: :created, location: @skill
+            render json: @skill, location: @skill
           else
             render json: @skill.errors, status: :unprocessable_entity
           end

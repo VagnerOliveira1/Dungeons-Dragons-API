@@ -4,7 +4,7 @@ class CreateSkills < ActiveRecord::Migration[6.0]
       t.integer :character_id
       t.string :name
       t.string :ability
-      t.boolean :proficient
+      t.boolean :proficient, default: false
 
       t.timestamps
     end

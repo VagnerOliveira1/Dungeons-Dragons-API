@@ -15,15 +15,15 @@
       "wisdom":3,
      "charisma":3
     })
-    vagner.skills.create(name:"teste",ability:"teste",proficient:true)
+     vagner.skills.create(name:"teste",ability:"teste",proficient:true)
 
     personagem = Character.create({
      "name":"OUTRO",
       "strength":0,
       "dexterity":0,
-      "constitution":40,
-      "inteligence":50,
-      "wisdom":30,
-     "charisma":30
+      "constitution":0,
+      "inteligence":5,
+      "wisdom":3,
+     "charisma":3
     })
     personagem.skills.create(name:"teste",ability:"teste",proficient:true)

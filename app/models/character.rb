@@ -50,7 +50,6 @@ class Character < ApplicationRecord
 
 
     def proficient_bonus
-
     end
 
 
