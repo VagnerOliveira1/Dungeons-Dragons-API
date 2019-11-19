@@ -37,15 +37,6 @@ class Character < ApplicationRecord
      scope :filter_character_name, ->(string){where('name LIKE ?', "%#{string}%") if string.present?}
 
 
-
-
-
-
-
-
-
-
-
     def level
         values = strength + dexterity + constitution + inteligence + wisdom + charisma 
         values = values /6
@@ -60,7 +51,7 @@ class Character < ApplicationRecord
         when 9..12 then 4
         when 13..16 then 5
         when 17..20 then 6
-        else puts('Invalid')
+        else 
         end
     end
 
