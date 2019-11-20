@@ -9,26 +9,17 @@ class Skill < ApplicationRecord
            if Character.column_names.include?self.ability 
              self.ability   
            end
-       
     end
 
     def modificador
         valor = character.read_attribute(atributo_equivalente)
-        case valor
-        when 1 then -5 
-        when 2..3 then -4
-        when 4..5 then -3
-        when 6..7 then -2
-        when 8..9 then -1
-        when 10..11 then 0
-        when 12..13 then 1
-        when 14..15 then 2
-        when 16..17 then 3
-        when 18..19 then 4
-        when 20 then 5
-        else 
+        compara = 1
+        modifica = -5
+        while compara < valor 
+           modifica += 1
+           compara += 2
         end
-
+        modifica
     end
 
     def score
