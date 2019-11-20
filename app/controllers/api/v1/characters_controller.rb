@@ -18,15 +18,11 @@ module Api
                        .filter_charisma_greather_than(params[:cha_gt])
                        .filter_charisma_less_than(params[:char_lt])
                        .filter_character_name(params[:name])
-          # @characters = Character.all
-          # render json: @characters 
-
+         
         end
 
         # GET /characters/1
         def show
-          # render json: @character
-
         end
 
         # POST /characters
