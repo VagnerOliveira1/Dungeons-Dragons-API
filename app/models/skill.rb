@@ -1,18 +1,15 @@
 class Skill < ApplicationRecord
     belongs_to :character, dependent: :destroy
     validates :name, presence: true, length: {maximum: 25}
-    validates :proficient, presence: true
 
     validates_inclusion_of :ability, in: [ "strength","dexterity", "constitution","inteligence","wisdom" ,"charisma"], presence: true
 
 
     def atributo_equivalente
-        habilidades = Skill.select(:ability).uniq
-        habilidades.each{ |a|   
-           if Character.column_names.include?a.ability 
-            return a.ability    
-          end
-        }
+           if Character.column_names.include?self.ability 
+             self.ability   
+           end
+       
     end
 
     def modificador

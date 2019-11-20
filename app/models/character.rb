@@ -7,12 +7,12 @@ class Character < ApplicationRecord
      
      validates :strength , presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
      validates :dexterity, presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
+     
      validates :constitution , presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
      validates :inteligence, presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
 
      validates :wisdom , presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
      validates :charisma, presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
-
 
      validates :name, presence: true, length: {maximum: 25}
 
@@ -39,7 +39,7 @@ class Character < ApplicationRecord
 
     def level
         values = strength + dexterity + constitution + inteligence + wisdom + charisma 
-        values = values /6
+        values = values / 6
     end
 
 
