@@ -1,6 +1,7 @@
 module Api
   module V1
     class SkillsController < ApplicationController
+        before_action :get_character
         before_action :set_skill, only: [:show, :update, :destroy]
         # GET /skills
         def index
@@ -15,7 +16,6 @@ module Api
 
         # POST /skills
         def create
-          @character = Character.find(params[:character_id])
           @skill = @character.skills.new(skill_params)
           if @skill.save
             render json: @skill, location: @skill
@@ -26,8 +26,6 @@ module Api
 
         # PATCH/PUT /skills/1
         def update
-          @character = Character.find(params[:character_id])
-          @skill = @character.skills.find(params[:id])
           if @skill.update(skill_params)
             render json: @skill
           else
@@ -37,19 +35,16 @@ module Api
 
         # DELETE /skills/1
         def destroy
-          @character = Character.find(params[:character_id])
-          @skill = @character.skills.update(params[:id])
-          if @skill
-            @skill.destroy
-          else
-            render json: @skill.errors, status: :unprocessable_entity
-          end
+          @skill.destroy
         end
 
         private
+          def get_character
+            @character = Character.find(params[:character_id])
+          end
           # Use callbacks to share common setup or constraints between actions.
           def set_skill
-            @skill = Skill.find(params[:id])
+            @skill = @character.skills.find(params[:id])
           end
 
           # Only allow a trusted parameter "white list" through.
