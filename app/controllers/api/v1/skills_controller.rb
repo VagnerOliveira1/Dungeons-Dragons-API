@@ -11,14 +11,14 @@ module Api
 
         # GET /skills/1
         def show
-          render json: @skill
+          render json: @skill, except: [:created_at, :updated_at]
         end
 
         # POST /skills
         def create
           @skill = @character.skills.new(skill_params)
           if @skill.save
-            render json: @skill, location: @skill
+            render json: @skill,location: @skill
           else
             render json: @skill.errors, status: :unprocessable_entity
           end
@@ -27,7 +27,7 @@ module Api
         # PATCH/PUT /skills/1
         def update
           if @skill.update(skill_params)
-            render json: @skill
+            render json: @skill, except: [:created_at, :updated_at]
           else
             render json: @skill.errors, status: :unprocessable_entity
           end

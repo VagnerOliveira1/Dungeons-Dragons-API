@@ -23,6 +23,7 @@ module Api
 
         # GET /characters/1
         def show
+           @character = Character.find_by(id: params[:id])
         end
 
         # POST /characters
@@ -39,7 +40,7 @@ module Api
         def update
           @character = Character.find(params[:id])
           if @character.update(character_params)
-            render json: @character
+            render json: @character, except: [:created_at, :updated_at]
           else
             render json: @character.errors, status: :unprocessable_entity
           end
@@ -60,7 +61,6 @@ module Api
           def set_character
             @character = Character.find(params[:id])
           end
-  
 
           # Only allow a trusted parameter "white list" through.
           def character_params
