@@ -1,6 +1,6 @@
 class Character < ApplicationRecord
     #  attr_reader :name, :strength, :dexterity, :constitution, :inteligence, :wisdom, :charisma
-     has_many :skills
+     has_many :skills,  dependent: :destroy
 
      validates :strength , presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
      validates :dexterity, presence: true, inclusion:{in: 1..20},  numericality: { only_integer: true }
@@ -38,21 +38,19 @@ class Character < ApplicationRecord
 
 
     def level
-        values = strength + dexterity + constitution + inteligence + wisdom + charisma 
-        values = values / 6
+        values = (strength + dexterity + constitution + inteligence + wisdom + charisma )/ 6
+        # values = values / 6
     end
 
 
     def proficient_bonus
-
-        case level
-        when 1..4 then 2
-        when 5..8 then 3
-        when 9..12 then 4
-        when 13..16 then 5
-        when 17..20 then 6
-        else 
+        comparador = 4
+        bonus = 2
+        while comparador < level
+            comparador += 4
+            bonus += 1
         end
+        bonus
     end
 
 
