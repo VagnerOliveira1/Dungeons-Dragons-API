@@ -2,25 +2,5 @@
 
 # APS2 TÓPICOSII ALUNOS: VAGNER & VALCIR 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Implementação nas Tabelas no Banco de Dados onde, os Modelos, Rotas e Controllers permititem a consulta, criação, edição e exclusão de registros usando uma API desenvolvida em Ruby on Rails.<br/>
+A biblioteca jBuilder é usada para construção das estruturas de JSON requisitadas.
